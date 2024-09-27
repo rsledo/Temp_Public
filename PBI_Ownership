@@ -1,0 +1,89 @@
+1. Dataflows
+Description: Dataflows are ETL (Extract, Transform, Load) processes that allow data preparation outside of datasets.
+What to change: Ownership and connections used in dataflows.
+Steps:
+Transfer Ownership: Open the workspace, go to the Dataflows tab, select the dataflow, and update the owner.
+Connection Credentials: Make sure to update credentials used for any linked services (databases, APIs, etc.).
+2. Datasets (Semantic Layer)
+Description: Datasets represent the semantic layer in Power BI, including data models and measures.
+What to change: Dataset refresh credentials.
+Steps:
+Go to the Settings of the dataset.
+Under the Scheduled Refresh tab, update the credentials for all data sources.
+Check RLS (Row-Level Security) settings if the new user will manage different permissions.
+3. Gateways
+Description: On-premises data gateways allow Power BI to access on-premises data securely.
+What to change: Update gateway ownership and data source credentials.
+Steps:
+In the Power BI Service, go to Manage Gateways.
+Add the new user as an admin for the relevant gateway.
+For each data source connected through the gateway, update the credentials under the Data Source Settings.
+4. Email Subscriptions
+Description: Email subscriptions are scheduled email reports sent automatically to users.
+What to change: Transfer ownership of subscriptions.
+Steps:
+Subscriptions are user-specific. The new user needs to manually recreate these subscriptions for any reports or dashboards.
+Ensure the new user has appropriate access to the reports or dashboards to set up subscriptions.
+5. Power Automate Flows
+Description: Power Automate flows allow automated processes, such as sending Power BI reports via email or automating data refreshes.
+What to change: Update ownership and connections.
+Steps:
+Open Power Automate and go to My Flows.
+For each flow, reassign ownership (if shared) or export the flow and import it under the new user’s account.
+Ensure that all connections (e.g., Power BI, Outlook, SQL) used in the flow are updated to use the new user’s credentials.
+6. Alert Rules
+Description: Data-driven alerts are used to notify users when certain conditions are met in a dashboard.
+What to change: Alerts are user-specific and cannot be transferred.
+Steps:
+The new user needs to manually recreate alerts on the dashboards they have access to.
+Ensure the new user is granted the necessary permissions to the underlying datasets and reports.
+7. Workspace Ownership and Permissions
+Description: Workspaces are shared environments where reports, datasets, and dataflows are managed.
+What to change: Update workspace ownership and permissions.
+Steps:
+Navigate to the Workspace settings in Power BI Service.
+Update the Admin Role for the workspace to assign the new user as an admin.
+Review and modify permissions for each member as needed.
+8. Dashboard and Report Sharing
+Description: Reports and dashboards can be shared with other users.
+What to change: Reassign shared content.
+Steps:
+The new user will need to reshare any dashboards and reports manually, as shared content is user-specific.
+Ensure the new user has appropriate access to the underlying datasets.
+9. Scheduled Data Refreshes
+Description: Reports and datasets often have scheduled refreshes to keep data up-to-date.
+What to change: Update refresh credentials for all datasets.
+Steps:
+Go to the Settings of each dataset in the Power BI Service.
+Update credentials under the Scheduled Refresh tab for all data sources.
+Check if any datasets are connected through on-premises data gateways and update those credentials as well.
+10. Power BI Embedded (if applicable)
+Description: Power BI Embedded allows Power BI reports to be integrated into applications.
+What to change: Update service principal and API access.
+Steps:
+Ensure the new user has appropriate access to the Azure Active Directory (AAD) app registration used for Power BI Embedded.
+Update credentials and API tokens where necessary.
+11. App Ownership
+Description: Published Power BI apps can be shared across users in an organization.
+What to change: Ownership and publishing of apps.
+Steps:
+The new user needs to manually publish or republish any Power BI apps.
+Transfer workspace ownership if the app is linked to a workspace.
+12. Power BI Service Account (if applicable)
+Description: If a service account (or organizational account) is used for Power BI tasks.
+What to change: Update credentials for any data sources, gateways, and Power BI Services linked to this account.
+Steps:
+Check for all services linked to the Power BI service account and update credentials as necessary.
+Steps Overview
+Dataflows: Transfer ownership and update connection credentials.
+Datasets: Update refresh credentials and permissions (e.g., RLS).
+Gateways: Update gateway ownership and data source credentials.
+Email Subscriptions: New user needs to recreate subscriptions manually.
+Power Automate: Reassign ownership of flows or recreate them under the new account.
+Alerts: New user must recreate data alerts manually.
+Workspaces: Transfer workspace admin role to the new user.
+Dashboard and Report Sharing: Manually re-share reports and dashboards under the new user.
+Scheduled Data Refreshes: Update all data source credentials.
+Power BI Embedded: Update service principal and API tokens (if applicable).
+App Ownership: The new user must republish apps.
+Service Account: Update credentials for data sources and services linked to the service account.
