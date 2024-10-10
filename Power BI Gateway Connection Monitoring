@@ -68,6 +68,47 @@ Steps to Reactivate Power Automate Jobs:
 6. Enable Scheduled Flows (if disabled):
     * If any flows were paused or disabled due to the gateway outage, re-enable them by toggling the flow's status to On.
 
+5.1. Updating Semantic Models
+Semantic models represent the data models that drive reports and dashboards in Power BI.
+
+Open the Dataset:
+
+Go to Power BI Service.
+In the workspace, locate the dataset connected to the semantic model.
+Update Dataset Credentials:
+
+Click on the Settings (gear icon) for the dataset.
+Under the Data source credentials section, update the credentials for the data sources associated with the semantic model.
+Re-enter connection details (database, username, password) if necessary.
+Test Dataset Refresh:
+
+Manually trigger a refresh by clicking on Refresh Now.
+Monitor the Refresh History to confirm successful refresh without errors.
+Enable Scheduled Refresh:
+
+If disabled, ensure that the Scheduled Refresh option is re-enabled, so the dataset refreshes automatically based on the defined schedule.
+5.2. Updating Dataflows
+Dataflows enable self-service ETL (Extract, Transform, Load) for data preparation in Power BI.
+
+Go to Dataflows:
+
+In the Power BI workspace, navigate to the Dataflows tab.
+Edit Dataflow Settings:
+
+Select the dataflow that relies on the on-premises gateway.
+In the dataflow editor, click on Settings (gear icon).
+Update Gateway Connection:
+
+Under Gateway Connection, ensure the appropriate on-premises data gateway is selected and shows an Online status.
+If necessary, update the Data source credentials used by the dataflow.
+Refresh Dataflow:
+
+After updating credentials and ensuring the gateway is online, click on Refresh Now to test the dataflow.
+Monitor the Refresh History to confirm the dataflow runs without errors.
+Enable Scheduled Refresh:
+
+Ensure that scheduled refresh is enabled for the dataflow if it was previously paused.
+
 5. Additional Troubleshooting Steps <a name="additional-troubleshooting-steps"></a>
 If the gateway remains offline after following the steps above, consider these additional troubleshooting steps:
 * Check Network Connectivity.
