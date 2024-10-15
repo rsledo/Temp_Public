@@ -1,0 +1,68 @@
+
+
+To send a Power BI report filtered by client to each individual client using Power Automate, you'll need to set up a process that leverages Power Automate to dynamically filter the report and then send it to each client via email.
+Here are the detailed steps to accomplish this:
+Prerequisites
+1. A Power BI report with a client filter (e.g., a slicer or page filter by client).
+2. A Power Automate subscription or access to Microsoft Power Automate.
+3. Permissions to use Power BI’s export API or subscribe to reports in Power Automate.
+Steps
+Step 1: Create the Report with the Client Filter
+Ensure that your report has a page filter or slicer for clients. You should be able to filter the report based on individual clients. For example, in the report page, you have a Client Name filter.
+Step 2: Set up a Table of Clients with Emails (Optional)
+If you don’t already have a list of clients with their corresponding emails, you should create a simple table or data source (e.g., an Excel file, SQL database, or SharePoint list) that lists all clients and their associated email addresses.
+Example structure:
+Client Name	Email
+Client A	clienta@example.com
+Client B	clientb@example.com
+Client C	clientc@example.com
+Step 3: Open Power Automate
+1. Sign in to Power Automate.
+2. Select Create on the left navigation panel and choose Automated Flow.
+Step 4: Create a New Flow
+1. Choose a Trigger:
+    * Select a trigger to start the flow. For example, you can choose Recurrence to schedule the report to be sent periodically (e.g., daily or weekly).
+    * Define the recurrence (e.g., every week).
+Step 5: Add a "List of Clients" Action (Optional)
+If you're using a table or a list of clients:
+1. Add a New Action and select Get Rows (for Excel or SharePoint) or Get Items (for a SharePoint list).
+    * This will retrieve the list of clients and their corresponding email addresses.
+Step 6: Add the Power BI "Export to File" Action
+1. Add a New Action in your flow.
+2. Search for Power BI and choose the Export to File for Power BI Reports action.
+3. Configure the following parameters:
+    * Workspace: Select the Power BI workspace where your report is located.
+    * Report: Choose the report you want to export.
+    * Export Format: Choose either PDF or Excel, depending on your preference.
+    * Pages: Select the pages of the report you want to include.
+4. Filter the Report by Client:
+    * In the "Export to File" action, under Filter, add a filter query for the client field.
+    * Example: "Client Name eq 'Client A'".
+        * The syntax may depend on the actual name of your client column in Power BI.
+        * This dynamically filters the report based on the client.
+5. If using a list of clients from a data source, insert a dynamic content variable (e.g., from the list of clients in Excel or SharePoint) into the filter query so that the flow runs for each client individually.
+Step 7: Add an "Email" Action
+1. After exporting the filtered report, add another action to send the report via email.
+2. Search for Outlook or Gmail and choose Send an Email (V2).
+3. Configure the email action:
+    * To: Use the dynamic content field to insert the client's email address (if using a client list).
+    * Subject: Enter the subject of the email (e.g., "Your Weekly Report").
+    * Body: Write the body of the email.
+    * Attachment: Add the exported Power BI file (PDF or Excel) as an attachment from the previous Export to File step.
+Step 8: Loop Through the Clients (If Needed)
+If you're sending the report to multiple clients, use a Loop to iterate through each client in your list:
+1. Add a "Apply to Each" loop to process each client.
+2. Inside the loop, use the Export to File and Send Email actions, and dynamically replace the client and email for each iteration.
+Step 9: Test the Flow
+1. Save the flow.
+2. Test it manually by running the flow and checking if the report gets filtered correctly for each client and emailed.
+Step 10: Monitor and Maintain
+* Monitor the Flow: After the flow runs, you can monitor the success or failure of each run from the Run History in Power Automate.
+* Adjust the Schedule: If necessary, adjust the flow recurrence to fit your needs.
+
+Example Flow Summary
+1. Trigger: Flow starts on a schedule (e.g., weekly).
+2. Get Clients (Optional): Retrieve a list of clients and their email addresses from a table.
+3. Export Power BI Report: Filter the report by client using a dynamic filter and export it.
+4. Send Email: Attach the exported report and send it to the corresponding client.
+5. Loop: If using a list of clients, loop through each client to repeat the process.
