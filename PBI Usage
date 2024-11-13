@@ -39,3 +39,42 @@ Visualization Ideas for Usage Analytics Dashboard
 * Top Users & Most Accessed Reports: Identify power users and top-performing reports in terms of engagement.
 * User Segmentation: Filter 'active' vs. 'passive' users based on thresholds like views per month.
 Combining these methods, especially with built-in usage reports and Power BI REST API data, will allow you to create a robust adoption and usage tracking solution that highlights user engagement trends effectively.
+
+----------------------------------------------------
+
+
+For creating a report based on Power BI’s built-in usage metrics, Power BI provides a way to capture and use this data without needing to manually create a dataset from scratch. Here’s how you can use and customize these usage metrics reports in detail:
+Using Power BI’s Built-in Usage Metrics
+1. Access Usage Metrics for a Report or Dashboard:
+    * In Power BI Service, go to your Workspace and select the Reports or Dashboards tab.
+    * Click on the View Usage Metrics Report option available for each report or dashboard. This opens a predefined usage metrics report for that specific item, showing you basic stats like views, users, and frequency over time.
+2. Save a Copy of the Usage Metrics Report for Customization:
+    * When viewing the usage metrics report, select File > Save As to save a copy.
+    * This creates a standalone version of the usage metrics report that you can edit and customize to meet your needs.
+    * You can now modify it, add custom visuals, or combine metrics from multiple reports to build a broader adoption dashboard.
+3. Understanding the Usage Metrics Dataset Structure:
+    * Power BI generates a hidden Usage Metrics dataset in the background for each report or dashboard. This dataset is dynamically created and linked to each saved usage metrics report.
+    * The dataset includes tables like Users, Reports, and Views. Fields available generally include:
+        * User ID: Identifies the user who accessed the report.
+        * Report ID and Report Name: Details of the report or dashboard accessed.
+        * Date Accessed: Date and time of access.
+        * Views: Number of times the report was viewed.
+    * Note: This dataset is limited to the specific report or dashboard, so each report’s usage metrics are isolated unless you create a consolidated report (see Step 6).
+4. Customize and Add Additional Measures in the Saved Metrics Report:
+    * Once saved, the metrics report becomes editable, allowing you to add visuals like line charts for trend analysis or matrix visuals for user segmentation.
+    * Add calculated columns or measures, like distinct views by day or cumulative engagement over time, to gain insights into patterns of active vs. passive users.
+5. Publish and Share the Customized Report:
+    * After making customizations, you can publish the usage metrics report to a workspace and share it as you would with any Power BI report.
+    * For automation, consider setting up scheduled refreshes to keep the report up-to-date with the latest usage data.
+Consolidating Multiple Reports’ Usage Data (Optional)
+If you need a dashboard that aggregates usage data across multiple reports or dashboards:
+1. Enable Power BI Admin Portal Usage Logging:
+    * Power BI Admins can enable activity logging in the Admin Portal to capture all workspace activities, including report views.
+    * This enables exporting activity logs to Azure Log Analytics or other log destinations where it can be consolidated into a single dataset.
+2. Import Activity Logs into Power BI:
+    * Use Azure Log Analytics or Power BI REST API (with GetActivityEvents) to retrieve logs, then import this data as a dataset in Power BI.
+    * Create visuals to show a holistic view of all reports, track active vs. passive user engagement, and understand usage trends across the platform.
+Additional Notes
+* Limitations: Power BI’s default usage metrics do not provide data beyond 90 days, so using activity logging or API integrations is ideal for long-term tracking.
+* User Privacy: Ensure compliance with data governance policies, as usage metrics track user-specific information.
+This approach, especially with consolidated reporting, will allow you to build a comprehensive usage analytics solution tailored to identifying adoption patterns and user engagement effectively.
