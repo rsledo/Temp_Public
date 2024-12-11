@@ -1,66 +1,69 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  text-align: left;
-  background-color: white;
-}
+  <style>
+    /* General Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-align: left;
+      background-color: white;
+    }
 
-/* Header Row Styles */
-table th {
-  font-weight: bold;
-  text-align: left;
-  padding: 8px;
-  border-bottom: 2px solid #ddd;
-}
+    /* Header Row Styles */
+    table th {
+      font-weight: bold;
+      text-align: left;
+      padding: 8px;
+      border-bottom: 2px solid #ddd;
+    }
 
-/* Row Banding */
-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
+    /* Row Banding */
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
 
-/* Cell Padding */
-table td {
-  padding: 8px;
-  vertical-align: middle;
-}
+    /* Cell Padding */
+    table td {
+      padding: 8px;
+      vertical-align: middle;
+    }
 
-/* Numeric Columns */
-table .numeric {
-  text-align: right;
-}
+    /* Numeric Columns */
+    table .numeric {
+      text-align: right;
+    }
 
-/* Conditional Formatting for Bar Charts */
-table .bar-cell {
-  position: relative;
-  text-align: left;
-  padding: 8px;
-}
+    /* Conditional Formatting for Bar Charts */
+    table .bar-cell {
+      position: relative;
+      text-align: left;
+      padding: 8px;
+    }
 
-table .bar {
-  height: 8px;
-  background-color: #4CAF50; /* Green color for bars */
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-}
+    table .bar {
+      height: 8px;
+      background-color: #4CAF50; /* Green color for bars */
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+    }
 
-table .bar-label {
-  position: relative;
-  padding-left: 100px; /* Adjust to ensure text doesn't overlap bars */
-}
+    table .bar-label {
+      position: relative;
+      padding-left: 100px; /* Adjust to ensure text doesn't overlap bars */
+    }
 
-/* Number Formatting (e.g., Percentages, Large Numbers) */
-table .percentage {
-  text-align: right;
-  color: black;
-  font-weight: normal;
-}
+    /* Number Formatting (e.g., Percentages, Large Numbers) */
+    table .percentage {
+      text-align: right;
+      color: black;
+      font-weight: normal;
+    }
 
-/* Highlight Row or Cell (Optional) */
-table tr:hover {
-  background-color: #e0f7fa; /* Light cyan for hover effect */
-}
+    /* Highlight Row or Cell (Optional) */
+    table tr:hover {
+      background-color: #e0f7fa; /* Light cyan for hover effect */
+    }
+  </style>
