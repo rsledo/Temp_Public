@@ -1,0 +1,30 @@
+DEFINE
+    VAR LatestBusinessDate = 
+        MAX('s_balances'[business_date]) -- Dynamically gets the latest business_date
+
+    VAR DSOFilterTable = 
+        TREATAS(
+            {
+                (LatestBusinessDate, FALSE), 
+                (LatestBusinessDate, BLANK())
+            },
+            's_balances'[business_date],
+            'Dummy'[Dummy]
+        )
+
+EVALUATE
+    CALCULATETABLE(
+        's_balances',
+        DSOFilterTable
+    )
+
+---------------------------
+
+VAR LatestBusinessDate = 
+    MAXX(
+        FILTER(
+            's_balances',
+            NOT(ISBLANK('s_balances'[business_date]))
+        ),
+        's_balances'[business_date]
+    )
