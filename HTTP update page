@@ -1,0 +1,3 @@
+
+
+https://api.powerbi.com/v1.0/myorg/groups/{groupId}/datasets/{datasetId}/refreshes
