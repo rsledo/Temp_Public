@@ -1,0 +1,84 @@
+
+
+Accrual
+Accrual Amount
+Accrual Amount USD
+Accrual Amount USD DoD
+Accrual Amount USD DoD %
+Accrual Amount USD FirstMonth
+Accrual Amount USD FirstQuarter
+Accrual Amount USD FirstWeek
+Accrual Amount USD FirstYear
+Accrual Amount USD MTD
+Accrual Amount USD MTD %
+Accrual Amount USD Prev Day
+Accrual Amount USD Prev Week
+Accrual Amount USD QT D
+Accrual Amount USD QTD %
+Accrual Amount USD WoW
+Accrual Amount USD WoW %
+Accrual Amount USD WTD
+Accrual Amount USD WTD %
+Accrual Amount USD YTD
+Accrual Amount USD YTD %
+
+IBB
+   IBB Amount
+   IBB Amount USD
+Other
+   DCF
+   Spread
+Rate
+   Fx Rate
+   Rate
+   Ref Rate Fixing
+ETD NII
+ Account
+ Accrual
+Dates
+Measures
+Other
+
+Facing Account 2
+
+DCF
+Spread
+Rate
+Fx Rate
+匣
+Rate
+Ref Rate Fixing
+VE ETD NII
+ve Account
+Account
+Account Category
+> Eg Account Category Hierarchy
+Office ID
+Segment Type
+VD Accrual
+i% Accrual Group
+Accrual Methodology
+Accrual Source
+Accrual Type
+
+Dates
+Date
+end _date
+Ref Rate Fixing Date start_date updatetimestamp
+> e Measures ve Other
+Calendar
+Class
+Currency
+Firm ID
+PI Exec ID
+Ref Rate Name
+Ref Rate Type
+UBS Entity
+VE Facing Account 2
+AC
+Account Classification
+FM
+FMOFAC
+OF
+〉目
+FRDM Account Info
