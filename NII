@@ -1,6 +1,20 @@
 
+General Idea
 
-Accrual
+The Power BI Data Model provides detailed information on various accrual components, interest-bearing balances (IBB), rates, and dimensions. The goal is to facilitate analysis and reporting for end users by structuring data into well-defined measures and dimensions.
+
+The model consists of the following key areas:
+
+Accrual Measures: Various calculations related to accrual amounts in different timeframes and comparisons.
+
+IBB Measures: Interest-bearing balance data.
+
+Rate Measures: Includes exchange rates and reference rate fixings.
+
+Dimensions: Includes account-related attributes, accrual types, dates, and other relevant metadata.
+
+
+Accrual:
 Accrual Amount
 Accrual Amount USD
 Accrual Amount USD DoD
@@ -22,44 +36,33 @@ Accrual Amount USD WTD %
 Accrual Amount USD YTD
 Accrual Amount USD YTD %
 
-IBB
+IBB:
    IBB Amount
    IBB Amount USD
-Other
+Other:
    DCF
    Spread
-Rate
+Rate:
    Fx Rate
    Rate
    Ref Rate Fixing
-ETD NII
- Account
- Accrual
-Dates
-Measures
-Other
 
-Facing Account 2
-
-
-ETD NII
-Account
+ETD NII:
+ Account:
   Account
   Account Category
   Account Category Hierarchy
   Office ID
   Segment Type
-Accrual
+ Accrual:
   Accrual Group
   Accrual Methodology
   Accrual Source
   Accrual Type
-
-Dates
- Date
- Ref Rate Fixing Date 
-
-Other
+ Dates:
+  Date
+  Ref Rate Fixing Date 
+ Other:
   Calendar
   Class
   Currency
@@ -67,9 +70,9 @@ Other
   PI Exec ID
   Ref Rate Name
   Ref Rate Type
-   UBS Entity
+  UBS Entity
 
-Facing Account 2
+Facing Account 2:
   AC
   Account Classification
   FM
@@ -77,3 +80,31 @@ Facing Account 2
   OF
 
 FRDM Account Info
+
+Approach
+
+Structuring the Data Model
+
+The data model has been structured to provide a comprehensive view of accruals, interest-bearing balances, and associated rates.
+
+Each measure and dimension is categorized to allow efficient reporting and analysis.
+
+Data Categorization
+
+Account-related attributes are mapped in the Account dimension.
+
+Accrual-related details are grouped under Accrual dimensions.
+
+Date references and financial periods are stored in the Date dimension.
+
+Supporting metadata such as currency and firm identifiers are captured in the Other category.
+
+Usage in Reporting
+
+Measures can be used in reports to analyze trends, compare accruals over different periods, and identify financial patterns.
+
+Dimensions help filter and slice the data to focus on specific accounts, segments, or entities.
+
+Rates provide conversion factors for financial calculations involving multiple currencies.
+
+
