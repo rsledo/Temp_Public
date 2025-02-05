@@ -41,44 +41,39 @@ Other
 
 Facing Account 2
 
-DCF
-Spread
-Rate
-Fx Rate
-匣
-Rate
-Ref Rate Fixing
-VE ETD NII
-ve Account
+
+ETD NII
 Account
-Account Category
-> Eg Account Category Hierarchy
-Office ID
-Segment Type
-VD Accrual
-i% Accrual Group
-Accrual Methodology
-Accrual Source
-Accrual Type
+  Account
+  Account Category
+  Account Category Hierarchy
+  Office ID
+  Segment Type
+Accrual
+  Accrual Group
+  Accrual Methodology
+  Accrual Source
+  Accrual Type
 
 Dates
-Date
-end _date
-Ref Rate Fixing Date start_date updatetimestamp
-> e Measures ve Other
-Calendar
-Class
-Currency
-Firm ID
-PI Exec ID
-Ref Rate Name
-Ref Rate Type
-UBS Entity
-VE Facing Account 2
-AC
-Account Classification
-FM
-FMOFAC
-OF
-〉目
+ Date
+ Ref Rate Fixing Date 
+
+Other
+  Calendar
+  Class
+  Currency
+  Firm ID
+  PI Exec ID
+  Ref Rate Name
+  Ref Rate Type
+   UBS Entity
+
+Facing Account 2
+  AC
+  Account Classification
+  FM
+  FMOFAC
+  OF
+
 FRDM Account Info
