@@ -1,0 +1,27 @@
+Last Date Filter = 
+VAR LatestDate = CALCULATE(
+    MAX('F - ETD NII'[Date]),
+    ALL('F - ETD NII')
+)
+RETURN
+IF(
+    'F - ETD NII'[Date] = LatestDate,
+    "Last date",
+    FORMAT('F - ETD NII'[Date], "dd/MM/yyyy")
+)
+
+
+----------------------------------
+
+Selected Date = 
+VAR SelectedLabel = SELECTEDVALUE('F - ETD NII'[Last Date Filter])
+VAR LatestDate = CALCULATE(
+    MAX('F - ETD NII'[Date]),
+    ALL('F - ETD NII')
+)
+RETURN
+IF(
+    SelectedLabel = "Last date",
+    LatestDate,
+    DATEVALUE(SelectedLabel)
+)
