@@ -25,3 +25,26 @@ IF(
     LatestDate,
     DATEVALUE(SelectedLabel)
 )
+------------------------------------
+
+Measure List = DATATABLE(
+    "Measure", STRING,
+    {
+        {"Daily Interest"},
+        {"Term Loans"},
+        {"Non-Cash Collateral (CCP)"}
+    }
+
+
+--------------------------
+Selected Measure MTD =
+SWITCH(
+    SELECTEDVALUE('Measure List'[Measure]),
+    "Daily Interest", [Daily Interest MTD],
+    "Another Measure", [Another Measure MTD],
+    "Third Measure", [Third Measure MTD],
+    "Fourth Measure", [Fourth Measure MTD]
+)
+
+--------------------------
+
