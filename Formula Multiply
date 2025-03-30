@@ -1,0 +1,7 @@
+FX Rate Explain Delta Dyn Corrected =
+IF(
+    HASONEVALUE('Table'[Accrual Type]), 
+    ([FX Rate] - [FX Rate Yesterday]) * [Amount] * [Rate] * [DCF], 
+    SUMX(VALUES('Table'[Accrual Type]), 
+        ([FX Rate] - [FX Rate Yesterday]) * [Amount] * [Rate] * [DCF])
+)
