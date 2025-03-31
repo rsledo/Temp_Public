@@ -25,3 +25,21 @@ IF(
     SUMX(__table, [__value]), 
     [IBB Amount] * [Rate]
 )
+
+
+
+
+m_Total IBB Amount = 
+SUMX(
+    VALUES('F - ETD NII'[Accrual Type]),
+    SUMX(
+        VALUES('F - ETD NII'[Currency]),
+        SUMX(
+            VALUES('F - ETD NII'[Account Category]),
+            [IBB Amount] * [Rate]
+        )
+    )
+)
+
+
+
