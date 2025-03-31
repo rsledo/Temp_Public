@@ -5,3 +5,23 @@ IF(
     SUMX(VALUES('Table'[Accrual Type]), 
         ([FX Rate] - [FX Rate Yesterday]) * [Amount] * [Rate] * [DCF])
 )
+
+
+
+m_Total IBB Amount = 
+VAR __table = SUMMARIZE(
+    'F - ETD NII',  
+    [Accrual Type], 
+    [Currency], 
+    [Account Category],  
+    "__value", 
+    [IBB Amount] * [Rate]
+)
+RETURN
+IF(
+    NOT(ISINSCOPE('F - ETD NII'[Accrual Type])) || 
+    NOT(ISINSCOPE('F - ETD NII'[Currency])) || 
+    NOT(ISINSCOPE('F - ETD NII'[Account Category])),
+    SUMX(__table, [__value]), 
+    [IBB Amount] * [Rate]
+)
