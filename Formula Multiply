@@ -74,5 +74,20 @@ ADDCOLUMNS(
         RETURN SUMX( 'F - ETD NII', BalanceExplain )
 )
 
+--------------------------------------------
+Aggregated_NII =
+VAR Last100Days =
+    FILTER('D - Date', 'D - Date'[Date] >= TODAY() - 100)
 
+RETURN
+SUMMARIZE(
+    Last100Days,
+    'F - ETD NII'[Currency],
+    'F - ETD NII'[Accrual Type],
+    'F - ETD NII'[Account Category],
+    "FX Rate Explain",
+        SUMX( Last100Days, ([Fx Rate] - [FX Rate Previous Day Dyn]) * [IBB Amount] * [Rate] * [DCF] ),
+    "Balance Explain",
+        SUMX( Last100Days, ([IBB Amount] - [IBB Amount Previous Day Dyn]) * [Fx Rate Previous Day Dyn] )
+)
 
