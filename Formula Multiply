@@ -44,34 +44,20 @@ SUMX(
 -------------------------------------------------
 
 Aggregated_NII =
-VAR Last100Days =
-    CALCULATETABLE(
-        'F - ETD NII',
-        'F - ETD NII'[Date] >= TODAY() - 100
-    )
-
-RETURN
-ADDCOLUMNS(
-    SUMMARIZE(
-        'F - ETD NII',
-        'F - ETD NII'[Currency],
-        'F - ETD NII'[Accrual Type],
-        'F - ETD NII'[Account Category]
-    ),
-    "System_account_ID", 
-        LOOKUPVALUE(
-            'D - FRDM Account'[System_account_ID], 
-            'D - FRDM Account'[SomeKey], 
-            'F - ETD NII'[Account]
-        ),
+SUMMARIZE(
+    'F - ETD NII',
+    'F - ETD NII'[Currency],
+    'F - ETD NII'[Accrual Type],
+    'F - ETD NII'[Account Category],
+    --'D - FRDM Account'[System_account_ID],
     "FX Rate Explain",
-        VAR FxRateExplain = 
-            ([Fx Rate] - [FX Rate Previous Day]) * [IBB Amount] * [Rate] * [DCF]
-        RETURN SUMX( 'F - ETD NII', FxRateExplain ),
+        SUMX(
+            ([Fx Rate] - [FX Rate Previous Day DYN]) * [IBB Amount] * [Rate] * [DCF]
+        ),
     "Balance Explain",
-        VAR BalanceExplain = 
-            ([IBB Amount] - [IBB Amount Previous Day]) * [Fx Rate Previous Day]
-        RETURN SUMX( 'F - ETD NII', BalanceExplain )
+        SUMX(
+            ([IBB Amount] - [IBB Amount Previous Day Dyn]) * [Fx Rate Previous Day dyn]
+        )
 )
 
 --------------------------------------------
