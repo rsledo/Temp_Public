@@ -44,6 +44,13 @@ SUMX(
 -------------------------------------------------
 
 Aggregated_NII =
+VAR Last100Days =
+    CALCULATETABLE(
+        'F - ETD NII',
+        'F - ETD NII'[Date] >= TODAY() - 100
+    )
+
+RETURN
 ADDCOLUMNS(
     SUMMARIZE(
         'F - ETD NII',
