@@ -44,25 +44,28 @@ SUMX(
 -------------------------------------------------
 
 Aggregated_NII =
-SUMMARIZE(
-    'F - ETD NII',
-    'F - ETD NII'[Currency],
-    'F - ETD NII'[Accrual Type],
-    'F - ETD NII'[Account Category],
-    'D - FRDM Account'[System_account_ID],
-    "FX Rate Explain",
-        SUMX(
-            VALUES('F - ETD NII'[Currency]),
-            ([Fx Rate] - [FX Rate Previous Day]) * [IBB Amount] * [Rate] * [DCF]
+ADDCOLUMNS(
+    SUMMARIZE(
+        'F - ETD NII',
+        'F - ETD NII'[Currency],
+        'F - ETD NII'[Accrual Type],
+        'F - ETD NII'[Account Category]
+    ),
+    "System_account_ID", 
+        LOOKUPVALUE(
+            'D - FRDM Account'[System_account_ID], 
+            'D - FRDM Account'[SomeKey], 
+            'F - ETD NII'[Account]
         ),
+    "FX Rate Explain",
+        VAR FxRateExplain = 
+            ([Fx Rate] - [FX Rate Previous Day]) * [IBB Amount] * [Rate] * [DCF]
+        RETURN SUMX( 'F - ETD NII', FxRateExplain ),
     "Balance Explain",
-        SUMX(
-            VALUES('F - ETD NII'[Currency]),
+        VAR BalanceExplain = 
             ([IBB Amount] - [IBB Amount Previous Day]) * [Fx Rate Previous Day]
-        )
+        RETURN SUMX( 'F - ETD NII', BalanceExplain )
 )
-
-
 
 
 
