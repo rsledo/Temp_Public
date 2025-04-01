@@ -6,7 +6,7 @@ IF(
         ([FX Rate] - [FX Rate Yesterday]) * [Amount] * [Rate] * [DCF])
 )
 
-
+-------------------------------
 
 m_Total IBB Amount = 
 VAR __table = SUMMARIZE(
@@ -27,7 +27,7 @@ IF(
 )
 
 
-
+---------------------------------------------------
 
 m_Total IBB Amount = 
 SUMX(
@@ -40,6 +40,29 @@ SUMX(
         )
     )
 )
+
+-------------------------------------------------
+
+Aggregated_NII =
+SUMMARIZE(
+    'F - ETD NII',
+    'F - ETD NII'[Currency],
+    'F - ETD NII'[Accrual Type],
+    'F - ETD NII'[Account Category],
+    'D - FRDM Account'[System_account_ID],
+    "FX Rate Explain",
+        SUMX(
+            VALUES('F - ETD NII'[Currency]),
+            ([Fx Rate] - [FX Rate Previous Day]) * [IBB Amount] * [Rate] * [DCF]
+        ),
+    "Balance Explain",
+        SUMX(
+            VALUES('F - ETD NII'[Currency]),
+            ([IBB Amount] - [IBB Amount Previous Day]) * [Fx Rate Previous Day]
+        )
+)
+
+
 
 
 
