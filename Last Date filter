@@ -98,5 +98,10 @@ RETURN
         FORMAT('D - Date Inactive'[Date], "YYYY-MM-DD")
     )
 
+-----------------------------
+
+ let LatestDate = List.Max(Table.SelectRows(#"D - Date", each [Latest Date Filter] = "Latest Date")[Date])
+in if [Date] = LatestDate - #duration(1,0,0,0) then "Previous Date" else Date.ToText([Date], "yyyy-MM-dd")
+
 
 
