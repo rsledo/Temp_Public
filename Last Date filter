@@ -81,3 +81,22 @@ RETURN
     )
 
 -------------------
+
+
+
+Previous Date Filter =
+VAR LatestDate =
+    MAXX(
+        FILTER(ALL('D - Date'), 'D - Date'[Latest Date Filter] = "Latest Date"),
+        'D - Date'[Date]
+    )
+VAR PreviousDate = IF(ISBLANK(LatestDate), TODAY(), LatestDate - 1)
+RETURN
+    IF(
+        'D - Date Inactive'[Date] = PreviousDate,
+        "Previous Date",
+        FORMAT('D - Date Inactive'[Date], "YYYY-MM-DD")
+    )
+
+
+
