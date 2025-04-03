@@ -64,3 +64,20 @@ RETURN
 
 
 ---------------------
+
+
+Previous Date Filter Measure =
+VAR LatestDate =
+    MAXX(
+        FILTER('D - Date', 'D - Date'[Latest Date Filter] = "Latest Date"),
+        'D - Date'[Date]
+    )
+VAR PreviousDate = LatestDate - 1
+RETURN
+    IF(
+        SELECTEDVALUE('D - Date Inactive'[Date]) = PreviousDate,
+        "Previous Date",
+        FORMAT(SELECTEDVALUE('D - Date Inactive'[Date]), "YYYY-MM-DD")
+    )
+
+-------------------
