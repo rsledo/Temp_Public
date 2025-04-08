@@ -106,7 +106,6 @@ in if [Date] = LatestDate - #duration(1,0,0,0) then "Previous Date" else Date.To
 ------------------------------
 
 
-
 NII Max Date Prev Month =
 VAR LatestFullLoadedDate =
     CALCULATE(
@@ -114,18 +113,20 @@ VAR LatestFullLoadedDate =
         'FindLatestPopulatedDate'[LoadStatus] = "Full Loaded"
     )
 
-VAR StartOfPrevMonth =
-    EOMONTH(LatestFullLoadedDate, -2) + 1
+VAR DaysInCurrentMonthUpToLatestDate =
+    DAY(LatestFullLoadedDate)
 
-VAR EndOfPrevMonth =
-    EOMONTH(LatestFullLoadedDate, -1)
+VAR StartOfPreviousMonth =
+    DATE(YEAR(LatestFullLoadedDate), MONTH(LatestFullLoadedDate) - 1, 1)
+
+VAR EndDateOfPrevPeriod =
+    StartOfPreviousMonth + DaysInCurrentMonthUpToLatestDate - 1
 
 RETURN
 CALCULATE(
     MAX('D - Date'[Date]),
-    'D - Date'[Date] >= StartOfPrevMonth &&
-    'D - Date'[Date] <= EndOfPrevMonth
+    'D - Date'[Date] >= StartOfPreviousMonth &&
+    'D - Date'[Date] <= EndDateOfPrevPeriod
 )
-
 
 
