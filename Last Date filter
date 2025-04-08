@@ -103,5 +103,29 @@ RETURN
  let LatestDate = List.Max(Table.SelectRows(#"D - Date", each [Latest Date Filter] = "Latest Date")[Date])
 in if [Date] = LatestDate - #duration(1,0,0,0) then "Previous Date" else Date.ToText([Date], "yyyy-MM-dd")
 
+------------------------------
+
+
+
+NII Max Date Prev Month =
+VAR LatestFullLoadedDate =
+    CALCULATE(
+        MAX('D - Date'[Date]),
+        'FindLatestPopulatedDate'[LoadStatus] = "Full Loaded"
+    )
+
+VAR StartOfPrevMonth =
+    EOMONTH(LatestFullLoadedDate, -2) + 1
+
+VAR EndOfPrevMonth =
+    EOMONTH(LatestFullLoadedDate, -1)
+
+RETURN
+CALCULATE(
+    MAX('D - Date'[Date]),
+    'D - Date'[Date] >= StartOfPrevMonth &&
+    'D - Date'[Date] <= EndOfPrevMonth
+)
+
 
 
