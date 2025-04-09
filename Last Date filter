@@ -129,4 +129,23 @@ CALCULATE(
     'D - Date'[Date] <= EndDateOfPrevPeriod
 )
 
+---------------------------------------
+
+NII First Day of Month =
+VAR MaxDate =
+    [NII Max Date]
+RETURN
+    DATE(YEAR(MaxDate), MONTH(MaxDate), 1)
+
+************
+
+MTD Range Label =
+VAR StartDate = [NII First Day of Month]
+VAR EndDate = [NII Max Date]
+
+RETURN
+    "MTD measures: from " &
+    FORMAT(StartDate, "dd/mm/yyyy") &
+    " to " &
+    FORMAT(EndDate, "dd/mm/yyyy")
 
