@@ -79,10 +79,17 @@ SUMMARIZE(
 ---------------------------------------------------
 
 
+Balance Explain Delta Dyn Optimized =
+VAR FilteredDates =
+    FILTER (
+        'D - Date',
+        RELATED('FindLatestPopulatedDate'[LoadStatus]) = "Full Loaded"
+    )
+
 VAR FilteredBase =
-    CALCULATETABLE(
+    FILTER (
         'F - ETD NII',
-        'FindLatestPopulatedDate'[LoadStatus] = "Full Loaded"
+        'F - ETD NII'[Date] IN SELECTCOLUMNS(FilteredDates, "Date", 'D - Date'[Date])
     )
 
 RETURN
