@@ -79,10 +79,16 @@ SUMMARIZE(
 ---------------------------------------------------
 
 
-Balance Explain Delta Dyn Optimized =
+VAR FilteredBase =
+    CALCULATETABLE(
+        'F - ETD NII',
+        'FindLatestPopulatedDate'[LoadStatus] = "Full Loaded"
+    )
+
+RETURN
 SUMX (
     SUMMARIZE (
-        'F - ETD NII',
+        FilteredBase,
         [Accrual Type],
         [Currency],
         [Account Category],
