@@ -76,4 +76,22 @@ SUMMARIZE(
     "Balance Explain",
         SUMX( Last100Days, ([IBB Amount] - [IBB Amount Previous Day Dyn]) * [Fx Rate Previous Day Dyn] )
 )
+---------------------------------------------------
 
+
+Balance Explain Delta Dyn Optimized =
+SUMX (
+    SUMMARIZE (
+        'F - ETD NII',
+        [Accrual Type],
+        [Currency],
+        [Account Category],
+        [Account],
+        "IBB", [IBB Amount],
+        "IBBPrev", [IBB Amount Previous Day Dyn],
+        "FX", [FX Rate Previous Day Dyn],
+        "Rate", [Rate Previous Day Dyn],
+        "DCF", [DCF]
+    ),
+    ([IBB] - [IBBPrev]) * [FX] * [Rate] * [DCF]
+)
