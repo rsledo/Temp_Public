@@ -155,7 +155,7 @@ SUMX(
 )
 --------------------------------------------------------------------
 
-
+** WORKING **
 
 Delta Dyn =
 SUMX(
@@ -182,5 +182,23 @@ SUMX(
     RETURN Delta * [IBBAmount] * [Rate] * [DCF]
 )
 
+-------------------------------------------------------------------
 
+Balance Explain Delta Dyn =
+SUMX (
+    VALUES('F - ETD NII'[Accrual Type]),
+    SUMX (
+        VALUES('F - ETD NII'[Currency]),
+        SUMX (
+            VALUES('F - ETD NII'[Account Category]),
+            SUMX (
+                VALUES('F - ETD NII'[Account]),
+                VAR FxToday = [FX Rate]
+                VAR FxPrev = [FX Rate Previous Day Dyn]
+                VAR Delta = IF(ISBLANK(FxPrev), 0, FxToday - FxPrev)
+                RETURN Delta * [IBB Amount] * [Rate] * [DCF]
+            )
+        )
+    )
+)
 
