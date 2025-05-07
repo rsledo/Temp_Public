@@ -108,3 +108,25 @@ SUMX (
     ),
     ([IBB] - [IBBPrev]) * [FX] * [Rate] * [DCF]
 )
+------------------------------------------------------------
+
+
+FX Rate Explain Delta =
+SUMX(
+    SUMMARIZE(
+        'F - ETD NII',
+        'F - ETD NII'[Accrual Type],
+        'F - ETD NII'[Currency],
+        'F - ETD NII'[Account Category],
+        'F - ETD NII'[Account]
+    ),
+    VAR FxToday = CALCULATE(MAX([Fx Rate]))
+    VAR FxPrev = CALCULATE(MAX([Fx Rate Previous Day]))
+    VAR DeltaFX = IF(ISBLANK(FxPrev), 0, FxToday - FxPrev)
+    VAR Amount = CALCULATE(SUM([IBB Amount]))
+    VAR Rate = CALCULATE(MAX([Rate]))
+    VAR DCF = CALCULATE(MAX([DCF]))
+    RETURN DeltaRX * Amount * Rate * DCF
+)
+
+
