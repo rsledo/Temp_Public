@@ -129,4 +129,28 @@ SUMX(
     RETURN DeltaRX * Amount * Rate * DCF
 )
 
+-----------------------------------------------------------------
+
+Delta Dyn =
+SUMX(
+    SUMMARIZE(
+        'F - ETD NII',
+        'F - ETD NII'[Accrual Type],
+        'F - ETD NII'[Currency],
+        'F - ETD NII'[Account Category],
+        'F - ETD NII'[Account],
+        'D - Date'[Date]
+    ),
+    VAR FxToday = CALCULATE(MAX('F - ETD NII'[Fx Rate]))
+    VAR FxPrev =
+        CALCULATE(
+            MAX('F - ETD NII'[Fx Rate]),
+            'D - Date'[Date] = MAX('D - Date'[Date]) - 1
+        )
+    VAR Delta = IF(ISBLANK(FxPrev), 0, FxToday - FxPrev)
+    VAR Amount = CALCULATE(SUM('F - ETD NII'[IBB Amount]))
+    VAR Rate = CALCULATE(MAX('F - ETD NII'[Rate]))
+    VAR DCF = CALCULATE(MAX('F - ETD NII'[DCF]))
+    RETURN Delta * Amount * Rate * DCF
+)
 
