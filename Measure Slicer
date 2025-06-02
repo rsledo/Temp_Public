@@ -1,0 +1,12 @@
+Other :=
+CALCULATE(
+  SUM('s_etd_nii_reduced'[amount_accrual_usd]),
+  KEEPFILTERS(
+    's_etd_nii_reduced'[account_category]
+      IN {"COLLATERAL_TRANSFORM", "UNCATEGORIZED"}
+  ),
+  KEEPFILTERS(
+    's_etd_nii_reduced'[accrual_type]
+      IN {"CASH_INTEREST_CREDIT", "CASH_INTEREST_DEBIT"}
+  )
+)
