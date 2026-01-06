@@ -1,0 +1,22 @@
+Today DOY :=
+VAR _today = TODAY()
+RETURN
+    CALCULATE (
+        MAX ( 'D_Date'[Day of Year] ),
+        FILTER ( ALL ( 'D_Date' ), 'D_Date'[Business Date] = _today )
+    )
+
+
+------------------
+
+Quantity PY (Same days) :=
+VAR _todayDOY = [Today DOY]
+RETURN
+CALCULATE (
+    [Quantity],
+    SAMEPERIODLASTYEAR ( 'D_Date'[Business Date] ),
+    FILTER (
+        ALL ( 'D_Date'[Business Date], 'D_Date'[Day of Year] ),
+        'D_Date'[Day of Year] <= _todayDOY
+    )
+)
