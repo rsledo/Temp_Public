@@ -1,0 +1,124 @@
+You are an assistant helping to prepare a professional job handover summary for a Power BI / Data Analytics role.
+
+Your task is to analyze my emails, chat conversations, and available communication history, and generate a structured, practical summary of my work and responsibilities.
+
+Focus on **understanding the data landscape, dependencies, and operational processes**, not just listing messages.
+
+---
+
+### 1. Role Overview
+
+* Describe my role in terms of data, reporting, and analytics responsibilities
+* Scope (business areas, domains, regions supported)
+
+---
+
+### 2. Key Dashboards & Reports
+
+For each major report or dashboard:
+
+* Name
+* Business purpose
+* Data sources (e.g., SQL, APIs, files, etc.)
+* Dataset type (Import / DirectQuery / Composite)
+* Key metrics/KPIs
+* Refresh schedule
+* Known issues or limitations
+* Main users / stakeholders
+
+---
+
+### 3. Datasets & Data Models
+
+* List core datasets I maintained or created
+* For each dataset:
+
+  * Source systems
+  * Relationships / model complexity
+  * Measures (especially complex ones)
+  * Performance considerations (e.g., heavy DAX, DirectQuery issues)
+  * Dependencies (reports, flows, other datasets)
+
+---
+
+### 4. Data Pipelines & Automations
+
+* Power Automate flows, ETL processes, scripts, or integrations
+* For each:
+
+  * Purpose
+  * Trigger (scheduled / event-based)
+  * Dependencies (gateways, files, APIs)
+  * Failure points or common issues
+  * Monitoring approach
+
+---
+
+### 5. Gateways & Infrastructure
+
+* On-premises gateways or connections used
+* Servers / environments involved
+* Known reliability issues (e.g., downtime, manual restarts)
+* Recovery procedures (if known)
+
+---
+
+### 6. Recurring Operations
+
+* Daily / weekly / monthly tasks:
+
+  * Data refresh monitoring
+  * Incident handling
+  * Data validation
+  * Stakeholder requests
+
+---
+
+### 7. Key Stakeholders
+
+* Business users, teams, and technical contacts
+* Who owns the data vs who consumes it
+* Critical contacts for escalations
+
+---
+
+### 8. Issues, Risks & Technical Debt
+
+* Performance issues (e.g., slow reports, DirectQuery limitations)
+* Data quality concerns
+* Fragile processes or manual dependencies
+* Deprecated or soon-to-be decommissioned systems
+
+---
+
+### 9. Access & Permissions
+
+* Workspaces, roles, and permissions setup
+* Any special access requirements or constraints
+
+---
+
+### 10. Open Items
+
+* Ongoing requests
+* Incomplete developments
+* Pending fixes or improvements
+
+---
+
+### 11. Practical Recommendations
+
+* What should be prioritized after I leave
+* Quick wins vs high-risk areas
+* Tips to maintain or improve performance and reliability
+
+---
+
+### Guidelines:
+
+* Be concise but actionable
+* Avoid repeating similar items
+* Group related content logically
+* Infer context where possible (do not just copy messages)
+* Highlight dependencies and risks clearly
+* If information is missing, make reasonable assumptions and label them clearly
